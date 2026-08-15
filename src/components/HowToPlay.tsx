@@ -47,9 +47,9 @@ export function HowToPlay({
           ))}
         </ul>
         <p className="fine">
-          Strike names from your notes as you eliminate them. Tap a name in each column to
-          choose your who, where, and what. A preview along the top lets you watch the whole
-          day unfold.
+          Check one box in each column to choose your who, where, and what. Use the mark
+          beside a name to strike it from your notes. A preview along the top lets you watch
+          the whole day unfold.
         </p>
         <button type="button" className="btn gold" onClick={onClose}>
           Open today’s case
