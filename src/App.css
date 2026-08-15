@@ -379,36 +379,53 @@ main {
   border-bottom: 1px dashed var(--felt-rule);
 }
 
-.note-col .strike,
-.note-col .name {
+.note-col .pick,
+.note-col .strike {
   background: none;
   border: 0;
   color: inherit;
-  text-align: left;
 }
 
-.note-col .strike {
-  padding: 0.28rem 0.2rem;
+.note-col .pick {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 0;
+  padding: 0.32rem 0.15rem;
+  text-align: left;
 }
 
 .note-col .box {
   display: block;
-  width: 0.72rem;
-  height: 0.72rem;
-  border: 1px solid rgba(232, 197, 107, 0.55);
+  flex: 0 0 auto;
+  width: 0.95rem;
+  height: 0.95rem;
+  border: 1.5px solid rgba(232, 197, 107, 0.7);
+  background: transparent;
 }
 
-.note-col li.out .box {
-  background: var(--wax);
-  border-color: var(--wax);
+.note-col li.on .box {
+  background: var(--gold-bright);
+  border-color: var(--gold-bright);
+  box-shadow: 0 0 8px rgba(232, 197, 107, 0.55);
 }
 
 .note-col .name {
-  flex: 1;
-  padding: 0.28rem 0.15rem;
   font-family: var(--note);
   font-size: 0.78rem;
   line-height: 1.25;
+}
+
+.note-col .strike {
+  padding: 0.28rem 0.4rem;
+  color: rgba(232, 197, 107, 0.55);
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.note-col li.out .strike {
+  color: var(--wax);
 }
 
 .note-col li.out .name {
@@ -486,6 +503,14 @@ main {
   color: var(--cream);
   margin: 0.35rem 0 0.45rem;
   box-shadow: 0 8px 18px rgba(80, 10, 16, 0.35);
+}
+
+.btn.wax.ready {
+  background: linear-gradient(#e8c56b, #c9a44a);
+  color: var(--ink);
+  box-shadow:
+    0 0 22px rgba(232, 197, 107, 0.45),
+    0 8px 18px rgba(80, 10, 16, 0.25);
 }
 
 .verdict {

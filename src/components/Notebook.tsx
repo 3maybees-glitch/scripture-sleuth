@@ -24,7 +24,7 @@ function Column({
   return (
     <section className="note-col">
       <h3>{title}</h3>
-      <ul>
+      <ul role="radiogroup" aria-label={title}>
         {items.map((item) => {
           const out = eliminated.includes(item.id);
           const on = picked === item.id;
@@ -32,25 +32,25 @@ function Column({
             <li key={item.id} className={`${out ? 'out' : ''} ${on ? 'on' : ''}`}>
               <button
                 type="button"
-                className="strike"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onToggle(kind, item.id);
-                }}
+                role="radio"
+                className="pick"
+                onClick={() => onPick(kind, item.id)}
                 disabled={locked}
-                title="Strike from your notes — this does not pick your answer"
-                aria-pressed={out}
+                aria-checked={on}
               >
-                <span className="box" />
+                <span className="box" aria-hidden="true" />
+                <span className="name">{item.label}</span>
               </button>
               <button
                 type="button"
-                className="name"
-                onClick={() => onPick(kind, item.id)}
+                className="strike"
+                onClick={() => onToggle(kind, item.id)}
                 disabled={locked}
-                aria-pressed={on}
+                title="Cross this off your notes — this does not pick your answer"
+                aria-pressed={out}
+                aria-label={`Cross off ${item.label}`}
               >
-                {item.label}
+                <span aria-hidden="true">{out ? '×' : '–'}</span>
               </button>
             </li>
           );
@@ -83,8 +83,8 @@ export function Notebook({
         <p className="kicker light">Detective’s notes</p>
         <h2>Who · Where · What</h2>
         <p className="lede">
-          Tap one name in each column to fill the sentence below. The little boxes only strike a
-          name out of your notes — they are not your answer.
+          Check one box in each column to fill the sentence below. The mark on the right only
+          crosses a name off your notes — it is not your answer.
         </p>
       </header>
 
@@ -129,7 +129,7 @@ export function Notebook({
         </p>
         <button
           type="button"
-          className="btn wax"
+          className={`btn wax${ready && !locked ? ' ready' : ''}`}
           disabled={locked || !ready}
           onClick={onAccuse}
         >
@@ -139,7 +139,7 @@ export function Notebook({
           <p className="fine light">
             {ready
               ? 'Present whenever you have a theory. A wrong guess will not lock you out.'
-              : 'Pick one Who, one Where, and one What — the gold names are your accusation.'}
+              : 'Check one Who, one Where, and one What — the gold boxes are your accusation.'}
           </p>
         )}
       </div>
