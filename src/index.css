@@ -1,0 +1,94 @@
+:root {
+  --ink: #1c140c;
+  --ink-soft: #4a3824;
+  --parchment: #f3e4c0;
+  --parchment-deep: #e4ce9e;
+  --leather: #1a0f0b;
+  --leather-2: #2c1810;
+  --felt: #143024;
+  --felt-deep: #0c1e16;
+  --gold: #c9a44a;
+  --gold-bright: #e8c56b;
+  --wax: #8b1e2d;
+  --wax-deep: #5c101b;
+  --cream: #faf4e6;
+  --candle: #f3c56b;
+  --rule: rgba(80, 50, 20, 0.2);
+  --felt-rule: rgba(232, 197, 107, 0.22);
+
+  --display: 'Cinzel', 'Palatino Linotype', Palatino, serif;
+  --verse: 'Cormorant Garamond', 'Palatino Linotype', Palatino, serif;
+  --note: 'Special Elite', 'Courier New', Courier, monospace;
+  --ui: 'Outfit', 'Segoe UI', sans-serif;
+
+  font: 17px/1.5 var(--ui);
+  color: var(--cream);
+  background: var(--leather);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(1200px 600px at 50% -10%, rgba(232, 197, 107, 0.12), transparent 55%),
+    #120b08;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+
+p {
+  margin: 0 0 0.85em;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
