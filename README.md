@@ -27,12 +27,12 @@ A case-day runs **5:00 AM → 4:59 AM** in the browser’s timezone so a late-ni
 - Clue notebook: strike names, then accuse *who / where / what*
 - One assumption per unsealing; feedback tells you how many threads are true, not which
 - Night (or a correct solve) opens the full verse, a reflection, and a walk for the day
-- Watchman form collects email / text preferences locally — delivery comes next
+- Courier form collects email / text preferences locally — delivery comes next
 - Archive of the last fortnight
 
 ## What comes next
 
-Email and SMS at each unsealing. The Watchman page already stores the intended payload shape in `src/notify/schema.ts` (email, phone, hours). Likely messengers: Resend for mail, Twilio for text.
+Email and SMS at each unsealing. The Courier page already stores the intended payload shape in `src/notify/schema.ts` (email, phone, hours). Likely messengers: Resend for mail, Twilio for text.
 
 ## Stack
 

@@ -1,10 +1,10 @@
 import type { PhaseId, ReminderPrefs } from '../types';
 
 /**
- * Future watchman payload — collected in the UI now,
+ * Future courier payload — collected in the UI now,
  * ready to POST to an email / SMS worker later (Resend + Twilio).
  */
-export type WatchmanDispatch = {
+export type CourierDispatch = {
   to: { email?: string; phone?: string };
   phase: PhaseId;
   dateKey: string;
@@ -19,7 +19,7 @@ export type WatchmanDispatch = {
   };
 };
 
-export function prefsToDispatchTarget(prefs: ReminderPrefs): WatchmanDispatch['to'] {
+export function prefsToDispatchTarget(prefs: ReminderPrefs): CourierDispatch['to'] {
   return {
     email: prefs.emailOn ? prefs.email : undefined,
     phone: prefs.smsOn ? prefs.phone : undefined,

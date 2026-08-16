@@ -11,7 +11,7 @@ const empty: ReminderPrefs = {
   times: ['morning', 'midday', 'afternoon', 'evening', 'bedtime'],
 };
 
-export function Watchman({
+export function Courier({
   saved,
   onSave,
 }: {
@@ -43,32 +43,32 @@ export function Watchman({
   }
 
   return (
-    <section className="watchman parchment">
-      <p className="kicker">The watchman</p>
-      <h2>Reminders for the day’s seals</h2>
+    <section className="courier parchment">
+      <p className="kicker">The courier</p>
+      <h2>Letters for the day’s seals</h2>
       <p>
         The mystery is meant to follow you — not only when you open the site. We will send each
         new fragment as it unseals: morning words, midday words, afternoon, dusk, and the night
         reflection.
       </p>
       <p className="fine">
-        Email and text delivery are next to be wired. Leave your watch and we will keep it on this
-        device until the messengers are posted.
+        Email and text delivery are next to be wired. Name the courier and we will keep the hours
+        on this device until the letters ride out.
       </p>
 
       {done && saved ? (
-        <div className="saved-watch">
+        <div className="saved-courier">
           <p>
-            Watch posted{saved.name ? ` for ${saved.name}` : ''}.{' '}
+            Courier posted{saved.name ? ` for ${saved.name}` : ''}.{' '}
             {saved.emailOn && saved.email ? `Letters to ${saved.email}. ` : ''}
             {saved.smsOn && saved.phone ? `A word to ${saved.phone}.` : ''}
           </p>
           <button type="button" className="text-btn" onClick={() => setDone(false)}>
-            Change the watch
+            Change the hours
           </button>
         </div>
       ) : (
-        <form className="watch-form" onSubmit={submit}>
+        <form className="courier-form" onSubmit={submit}>
           <label>
             Name
             <input
@@ -115,7 +115,7 @@ export function Watchman({
             />
           </label>
           <fieldset>
-            <legend>Hours to knock</legend>
+            <legend>Hours to ride</legend>
             {phases.map((p) => (
               <label key={p.id} className="check">
                 <input
@@ -133,7 +133,7 @@ export function Watchman({
             ))}
           </fieldset>
           <button type="submit" className="btn gold">
-            Post the watch
+            Send the courier
           </button>
         </form>
       )}

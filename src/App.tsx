@@ -7,7 +7,7 @@ import { Reflection } from './components/Reflection';
 import { Timeline } from './components/Timeline';
 import { Verdict } from './components/Verdict';
 import { VerseFragment } from './components/VerseFragment';
-import { Watchman } from './components/Watchman';
+import { Courier } from './components/Courier';
 import { clueSentence } from './data/decks';
 import { buildFragment, scoreGuess } from './engine/clues';
 import {
@@ -25,7 +25,7 @@ import { emptyDay, loadStore, saveStore, toggleEliminated } from './engine/stora
 import type { DeckKind, PhaseId, ReminderPrefs, Store } from './types';
 import './App.css';
 
-type View = 'case' | 'archive' | 'watchman';
+type View = 'case' | 'archive' | 'courier';
 
 export default function App() {
   const [live, setLive] = useState(() => new Date());
@@ -109,7 +109,7 @@ export default function App() {
     setStore((s) => ({ ...s, seenHowTo: true }));
   }
 
-  function saveWatch(prefs: ReminderPrefs) {
+  function saveCourier(prefs: ReminderPrefs) {
     setStore((s) => ({ ...s, reminders: prefs }));
   }
 
@@ -158,10 +158,10 @@ export default function App() {
             </button>
             <button
               type="button"
-              className={view === 'watchman' ? 'on' : ''}
-              onClick={() => setView('watchman')}
+              className={view === 'courier' ? 'on' : ''}
+              onClick={() => setView('courier')}
             >
-              Watchman
+              Courier
             </button>
             <button type="button" onClick={() => setHowTo(true)}>
               How to play
@@ -218,7 +218,7 @@ export default function App() {
         )}
 
         {view === 'archive' && <Archive dates={archiveDates(live)} store={store} />}
-        {view === 'watchman' && <Watchman saved={store.reminders} onSave={saveWatch} />}
+        {view === 'courier' && <Courier saved={store.reminders} onSave={saveCourier} />}
       </main>
 
       <footer className="colophon">
