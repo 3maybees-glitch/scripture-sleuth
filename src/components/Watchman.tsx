@@ -44,7 +44,7 @@ export function Watchman({
 
   return (
     <section className="watchman parchment">
-      <p className="kicker">The watchman</p>
+      <p className="kicker">The Courier</p>
       <h2>Reminders for the day’s seals</h2>
       <p>
         The mystery is meant to follow you — not only when you open the site. We will send each
