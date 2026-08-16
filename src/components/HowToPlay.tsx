@@ -14,10 +14,11 @@ export function HowToPlay({
     <div className="modal-back" role="dialog" aria-modal="true" aria-labelledby="how-title">
       <div className="modal parchment">
         <p className="kicker">How the case is played</p>
-        <h2 id="how-title">A mystery for the day’s walk</h2>
+        <h2 id="how-title">The Hidden Word</h2>
         <p>
-          Each dawn ScriptureSleuth opens one sealed verse. The reference stays hidden. You are
-          given the first two or three words, and blanks for the rest.
+          ScriptureSleuth is a daily case for The Hidden Word. Each dawn one verse is sealed.
+          The reference stays hidden. You are given the first two or three words, and blanks
+          for the rest.
         </p>
         <p>
           As the day unfolds — noon, afternoon, dusk — the next few words are unsealed. At

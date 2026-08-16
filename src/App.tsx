@@ -117,7 +117,7 @@ export default function App() {
     const line = revealed
       ? `${verse.reference} — ScriptureSleuth`
       : `Today’s fragment: ${fragment.revealed} ${fragment.blanks.map((b) => '_'.repeat(Math.max(b.display.length, 2)) + b.punct).join(' ')}`;
-    const text = `${line}\nA mystery of the Word.`;
+    const text = `${line}\nThe Hidden Word.`;
     try {
       if (navigator.share) {
         await navigator.share({ title: 'ScriptureSleuth', text });
@@ -139,7 +139,7 @@ export default function App() {
             <IconGlass className="mark-ico" />
             ScriptureSleuth
           </p>
-          <h1>The daily mystery of the Word</h1>
+          <h1>The Hidden Word</h1>
           <p className="tag">
             A verse, sealed at dawn. Words unseal as the day walks on. Bring the case:{' '}
             <em>who</em> is speaking, <em>where</em> this is taking place, and <em>what</em> lesson
@@ -223,7 +223,7 @@ export default function App() {
 
       <footer className="colophon">
         <p>
-          ScriptureSleuth · verses in the King James text (public domain). The honors — crown,
+          ScriptureSleuth · The Hidden Word. Verses in the King James text (public domain). The honors — crown,
           cross, dove, lamb — may change. The sentence stays:{' '}
           <span className="clue-line inline">
             {clueSentence('paul', 'prison', 'strength')}
