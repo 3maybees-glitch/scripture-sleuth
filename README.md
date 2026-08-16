@@ -1,6 +1,6 @@
 # ScriptureSleuth
 
-A daily Bible-verse mystery. At dawn a verse is sealed. A few words unseal as the day walks on. You bring the case in the old Clue form:
+The Hidden Word — a daily Bible-verse mystery. At dawn a verse is sealed. A few words unseal as the day walks on. You bring the case in the old Clue form:
 
 > It was *Paul the Apostle*, in *a prison*, speaking of *strength*.
 
