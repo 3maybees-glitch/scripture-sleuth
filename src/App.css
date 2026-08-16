@@ -607,35 +607,35 @@ main {
   color: var(--wax);
 }
 
-.watchman,
+.courier,
 .archive {
   padding: 1.4rem 1.35rem 1.5rem;
 }
 
-.watchman h2,
+.courier h2,
 .archive h2 {
   margin: 0 0 0.55rem;
 }
 
-.watch-form {
+.courier-form {
   display: grid;
   gap: 0.7rem;
   margin-top: 1rem;
 }
 
-.watch-form label,
-.watch-form fieldset {
+.courier-form label,
+.courier-form fieldset {
   display: grid;
   gap: 0.3rem;
   font-size: 0.88rem;
 }
 
-.watch-form fieldset {
+.courier-form fieldset {
   border: 1px solid var(--rule);
   padding: 0.7rem 0.8rem;
 }
 
-.watch-form legend {
+.courier-form legend {
   font-family: var(--display);
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -643,22 +643,22 @@ main {
   padding: 0 0.3rem;
 }
 
-.watch-form input[type='text'],
-.watch-form input[type='email'],
-.watch-form input[type='tel'] {
+.courier-form input[type='text'],
+.courier-form input[type='email'],
+.courier-form input[type='tel'] {
   border: 1px solid rgba(80, 50, 20, 0.28);
   background: rgba(255, 250, 235, 0.55);
   padding: 0.5rem 0.6rem;
   color: var(--ink);
 }
 
-.watch-form .check {
+.courier-form .check {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.saved-watch {
+.saved-courier {
   margin-top: 1rem;
   padding: 0.9rem;
   border: 1px dashed var(--rule);
