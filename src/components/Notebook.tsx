@@ -139,7 +139,7 @@ export function Notebook({
           <p className="fine light">
             {ready
               ? 'Present whenever you have a theory. A wrong guess will not lock you out.'
-              : 'Check one Who, one Where, and one What — the gold boxes are your accusation.'}
+              : 'Check one Who, one Where, and one What — the gold boxes are your assumption.'}
           </p>
         )}
       </div>
