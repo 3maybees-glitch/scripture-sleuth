@@ -115,12 +115,12 @@ export default function App() {
 
   async function shareFragment() {
     const line = revealed
-      ? `${verse.reference} — ScriptureSleuth`
+      ? `${verse.reference} — Scripture Sleuth`
       : `Today’s fragment: ${fragment.revealed} ${fragment.blanks.map((b) => '_'.repeat(Math.max(b.display.length, 2)) + b.punct).join(' ')}`;
     const text = `${line}\nThe Hidden Word.`;
     try {
       if (navigator.share) {
-        await navigator.share({ title: 'ScriptureSleuth', text });
+        await navigator.share({ title: 'Scripture Sleuth', text });
       } else {
         await navigator.clipboard.writeText(text);
         setCopied(true);
@@ -137,7 +137,7 @@ export default function App() {
         <div className="hero-inner">
           <p className="mark">
             <IconGlass className="mark-ico" />
-            ScriptureSleuth
+            Scripture Sleuth
           </p>
           <h1>The Hidden Word</h1>
           <p className="tag">
@@ -223,7 +223,7 @@ export default function App() {
 
       <footer className="colophon">
         <p>
-          ScriptureSleuth · The Hidden Word. Verses in the King James text (public domain). The honors — crown,
+          Scripture Sleuth · The Hidden Word. Verses in the King James text (public domain). The honors — crown,
           cross, dove, lamb — may change. The sentence stays:{' '}
           <span className="clue-line inline">
             {clueSentence('paul', 'prison', 'strength')}

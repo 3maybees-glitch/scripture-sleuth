@@ -16,7 +16,7 @@ export function HowToPlay({
         <p className="kicker">How the case is played</p>
         <h2 id="how-title">The Hidden Word</h2>
         <p>
-          ScriptureSleuth is a daily case for The Hidden Word. Each dawn one verse is sealed.
+          Scripture Sleuth is a daily case for The Hidden Word. Each dawn one verse is sealed.
           The reference stays hidden. You are given the first two or three words, and blanks
           for the rest.
         </p>
