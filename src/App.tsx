@@ -161,7 +161,7 @@ export default function App() {
               className={view === 'watchman' ? 'on' : ''}
               onClick={() => setView('watchman')}
             >
-              Watchman
+              The Courier
             </button>
             <button type="button" onClick={() => setHowTo(true)}>
               How to play
