@@ -37,7 +37,7 @@ A case-day runs **5:00 AM → 4:59 AM** in the browser’s timezone so a late-ni
 npm run casebook
 ```
 
-Writes `public/casebook/the-hidden-word-volume-one.pdf` and a three-case sampler. After purchase, buyers unseal the download on The Press with the phrase `LANTERN-CANDLE-EMBER`. Set `VITE_STRIPE_PAYMENT_LINK` to a live Stripe Payment Link before charging real cards (see `.env.example`).
+Writes `public/casebook/the-hidden-word-volume-one.pdf` and a three-case sampler. After purchase, buyers unseal the download on The Press with the phrase `LANTERN-CANDLE-EMBER`. Set `VITE_STRIPE_PAYMENT_LINK` to a live Stripe Payment Link before charging real cards (see `.env.example`). Mini devotions (reflection and walk) sit in a sealed night-watch section after the answer key so they cannot spoil an open case.
 
 ## What comes next
 

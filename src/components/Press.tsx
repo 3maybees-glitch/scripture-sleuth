@@ -42,8 +42,9 @@ export function Press({
         <p>
           Fifty closed files from the Archives, bound as a casebook you can keep. Each page leaves
           the verse partly sealed, sets the green felt board beside it, and waits for the old
-          sentence: <em>who</em>, <em>where</em>, <em>what</em>. The answer sheets sit at the back,
-          under a last wax seal.
+          sentence: <em>who</em>, <em>where</em>, <em>what</em>. The answer sheets sit at the back
+          under wax. After them, a night-watch section holds each file’s mini devotion — sealed
+          there so a reflection cannot give the case away.
         </p>
         <p className="fine">
           The daily case still turns with the sun. This volume is for the table, the pew, a long
@@ -117,6 +118,7 @@ export function Press({
             <li>50 cases on parchment, with the felt board on each leaf</li>
             <li>Printable check-boxes for Who, Where, and What</li>
             <li>Answer key sealed at the back — break it last</li>
+            <li>Night-watch walks after the key, so the devotion cannot spoil an open file</li>
             <li>Open the same files here after purchase, on the live green board</li>
           </ul>
           {unlocked ? (

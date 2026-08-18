@@ -150,7 +150,7 @@ function howToPage(): string {
         <h2>The Hidden Word</h2>
         <p>Each leaf is a closed file from the Archives. A verse is sealed. Some of the words have already unsealed — more on a Lantern Watch, fewer on an Ember Vigil. The reference is withheld. Your work is the old game of Clue, turned toward encouragement.</p>
         <blockquote>It was <em>Paul the Apostle</em>, in <em>a prison</em>, speaking of <em>strength</em>.</blockquote>
-        <p>Who is speaking? Where is this taking place? What lesson is on the table? Use the green felt board to strike names as you think, then check one box in each column and write the sentence. A wrong theory does not lock you out. Turn to the sealed sheets at the back only when you are ready to close the case.</p>
+        <p>Who is speaking? Where is this taking place? What lesson is on the table? Use the green felt board to strike names as you think, then check one box in each column and write the sentence. A wrong theory does not lock you out. The answer sheets sit under wax at the back. After them, a night-watch section holds the mini devotion for each file — a reflection and a walk. Those pages name the verse. Do not open them while a case is still on the table.</p>
         <div class="rank-row">
           ${(['lantern', 'candle', 'ember'] as const)
             .map((id) => {
@@ -181,7 +181,7 @@ function contentsPage(): string {
       <div class="paper-inner">
         <p class="kicker">The docket</p>
         <h2>Fifty files</h2>
-        <p>References stay in the answer sheets. Work the fragment. Do not hunt the verse by number.</p>
+        <p>References stay in the answer sheets. The night-watch walks follow them. Work the fragment. Do not hunt the verse by number.</p>
         <ol class="toc">${rows}</ol>
       </div>
     </section>`;
@@ -194,7 +194,7 @@ function warningPage(): string {
         <img class="cover-seal" src="${fileUrl('public/textures/wax-seal.jpg')}" alt="" />
         <p class="kicker">Break this seal last</p>
         <h2>The answer sheets</h2>
-        <p>The next leaves name every case: the sentence, the reference, and the verse in full. If a file is still open on your table, turn back. The honor is in the naming, not in the peek.</p>
+        <p>The next leaves name every case: the sentence, the reference, and the verse in full. After the key, the night-watch pages hold each file’s mini devotion. Both sections name the verse. If a file is still open on your table, turn back. The honor is in the naming, not in the peek.</p>
         <p class="cover-clue">It was who, in where, speaking of what.</p>
       </div>
     </section>`;
@@ -235,13 +235,64 @@ function answerPages(): string {
     .join('');
 }
 
+function devotionWarningPage(): string {
+  return `
+    <section class="page paper warn-page">
+      <div class="paper-inner warn-inner">
+        <img class="cover-seal" src="${fileUrl('public/textures/wax-seal.jpg')}" alt="" />
+        <p class="kicker">For the night watch</p>
+        <h2>Walk with the word</h2>
+        <p>These leaves are the mini devotion from each closed file — the same reflection and walk that open when a daily case is unsealed. They name the speaker, the place, and the verse. Do not enter until the case on your table is closed.</p>
+        <p class="cover-clue">The honor is in the naming, then the walk.</p>
+      </div>
+    </section>`;
+}
+
+function devotionPages(): string {
+  const perPage = 2;
+  const chunks: VolumeCase[][] = [];
+  for (let i = 0; i < volumeOneCases.length; i += perPage) {
+    chunks.push(volumeOneCases.slice(i, i + perPage));
+  }
+  return chunks
+    .map((group, pageIndex) => {
+      const cards = group
+        .map((leaf) => {
+          return `<article class="devotion-card">
+            <header class="devotion-head">
+              <div>
+                <p class="stamp">Case No. ${String(leaf.number).padStart(3, '0')}</p>
+                <p class="devotion-rank">${esc(rankMeta[leaf.rank].name)}</p>
+              </div>
+              <p class="reference">${esc(leaf.file.reference)}</p>
+            </header>
+            <p class="verse full">“${esc(leaf.file.text)}”</p>
+            <h3>Reflection</h3>
+            <p>${esc(leaf.file.reflection)}</p>
+            <h3>For your walk</h3>
+            <p>${esc(leaf.file.walk)}</p>
+          </article>`;
+        })
+        .join('');
+      return `
+        <section class="page paper devotion-page">
+          <div class="paper-inner">
+            <p class="kicker">Night watch · ${pageIndex + 1} of ${chunks.length}</p>
+            <h2>Walk with the word</h2>
+            ${cards}
+          </div>
+        </section>`;
+    })
+    .join('');
+}
+
 function samplerClose(): string {
   return `
     <section class="page paper warn-page">
       <div class="paper-inner warn-inner">
         <p class="kicker">The rest is sealed</p>
         <h2>Forty-seven files remain</h2>
-        <p>Volume One binds all fifty cases, the felt board on every leaf, and the answer sheets under wax at the back. Purchase it from The Press on Scripture Sleuth. After the receipt, the unsealing phrase is <strong>LANTERN-CANDLE-EMBER</strong>.</p>
+        <p>Volume One binds all fifty cases, the felt board on every leaf, the answer sheets under wax, and a night-watch section of mini devotions — sealed after the key, so they cannot spoil an open file. Purchase it from The Press on Scripture Sleuth. After the receipt, the unsealing phrase is <strong>LANTERN-CANDLE-EMBER</strong>.</p>
       </div>
     </section>`;
 }
@@ -401,6 +452,33 @@ function styles(): string {
     .key-page .sent { font-family: "Special Elite", "Courier New", monospace; font-size: 10.5px; }
     .key-page .ref { font-family: Cinzel, Palatino, serif; font-size: 8.5px; letter-spacing: 0.05em; text-transform: uppercase; color: #8b1e2d; width: 1.35in; }
     .verse-row td { font-family: "Cormorant Garamond", Palatino, serif; font-style: italic; font-size: 12.5px; padding-bottom: 0.28rem; border-bottom: 1px solid rgba(80,50,20,0.14); color: #4a3824; }
+    .devotion-page h2 { margin-bottom: 0.16in; }
+    .devotion-card {
+      border-top: 1px solid rgba(80,50,20,0.2);
+      padding: 0.16in 0 0.12in;
+      break-inside: avoid;
+    }
+    .devotion-card:last-child { padding-bottom: 0; }
+    .devotion-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.2in; margin-bottom: 0.08in; }
+    .devotion-rank { margin: 0.12rem 0 0; font-family: Cinzel, Palatino, serif; letter-spacing: 0.08em; text-transform: uppercase; font-size: 8.5px; color: #8b1e2d; }
+    .devotion-page .reference {
+      font-family: Cinzel, Palatino, serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 10px;
+      color: #8b1e2d;
+      margin: 0;
+      text-align: right;
+    }
+    .devotion-page .verse { font-size: 18px; margin: 0 0 0.12in; }
+    .devotion-card h3 {
+      margin: 0.12in 0 0.2rem;
+      font-size: 9px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #8b1e2d;
+    }
+    .devotion-card p { font-size: 12.5px; color: #1c140c; }
   `;
 }
 
@@ -450,6 +528,8 @@ const fullBody = [
   ...volumeOneCases.map(casePage),
   warningPage(),
   answerPages(),
+  devotionWarningPage(),
+  devotionPages(),
 ].join('\n');
 
 const samplerLeaves = [volumeOneCases[0], volumeOneCases[20], volumeOneCases[40]];
