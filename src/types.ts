@@ -52,11 +52,19 @@ export type ReminderPrefs = {
   times: PhaseId[];
 };
 
+export type CasebookProgress = {
+  unlocked: boolean;
+  cases: Record<string, DayProgress>;
+};
+
 export type Store = {
   seenHowTo: boolean;
   days: Record<string, DayProgress>;
   reminders: ReminderPrefs | null;
+  casebook: CasebookProgress;
 };
+
+export type CaseRankId = 'lantern' | 'candle' | 'ember';
 
 export type Phase = {
   id: PhaseId;

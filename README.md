@@ -22,13 +22,22 @@ A case-day runs **5:00 AM → 4:59 AM** in the browser’s timezone so a late-ni
 
 ## What is in v1
 
-- 34 curated KJV cases (public domain), plus Christmas / Easter overrides
+- 35 curated KJV cases on the daily wheel (public domain), plus Christmas / Easter overrides
 - Progressive blanks for hidden words
 - Clue notebook: strike names, then accuse *who / where / what*
 - One assumption per unsealing; feedback tells you how many threads are true, not which
 - Night (or a correct solve) opens the full verse, a reflection, and a walk for the day
 - Watchman form collects email / text preferences locally — delivery comes next
 - Archive of the last fortnight
+- **The Press** sells *The Hidden Word · Volume One*, a 50-case PDF from the Archives (20 Lantern Watch, 20 Candle Inquiry, 10 Ember Vigil)
+
+## The casebook
+
+```bash
+npm run casebook
+```
+
+Writes `public/casebook/the-hidden-word-volume-one.pdf` and a three-case sampler. After purchase, buyers unseal the download on The Press with the phrase `LANTERN-CANDLE-EMBER`. Set `VITE_STRIPE_PAYMENT_LINK` to a live Stripe Payment Link before charging real cards (see `.env.example`).
 
 ## What comes next
 

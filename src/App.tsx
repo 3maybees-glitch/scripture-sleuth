@@ -1,13 +1,16 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Archive } from './components/Archive';
+import { CasebookReader } from './components/CasebookReader';
 import { HowToPlay } from './components/HowToPlay';
 import { BadgeIcon, IconGlass } from './components/Icons';
 import { Notebook } from './components/Notebook';
+import { Press } from './components/Press';
 import { Reflection } from './components/Reflection';
 import { Timeline } from './components/Timeline';
 import { Verdict } from './components/Verdict';
 import { VerseFragment } from './components/VerseFragment';
 import { Watchman } from './components/Watchman';
+import { unlockMatches } from './data/volumeOne';
 import { clueSentence } from './data/decks';
 import { buildFragment, scoreGuess } from './engine/clues';
 import {
@@ -25,7 +28,7 @@ import { emptyDay, loadStore, saveStore, toggleEliminated } from './engine/stora
 import type { DeckKind, PhaseId, ReminderPrefs, Store } from './types';
 import './App.css';
 
-type View = 'case' | 'archive' | 'watchman';
+type View = 'case' | 'archive' | 'watchman' | 'press' | 'volume';
 
 export default function App() {
   const [live, setLive] = useState(() => new Date());
@@ -35,6 +38,16 @@ export default function App() {
   const [howTo, setHowTo] = useState(() => !loadStore().seenHowTo);
   const [pick, setPick] = useState({ who: '', where: '', what: '' });
   const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const unlock = params.get('unlock');
+    if (unlock && unlockMatches(unlock)) {
+      setStore((s) => ({ ...s, casebook: { ...s.casebook, unlocked: true } }));
+      setView('press');
+    }
+    if (params.get('view') === 'press') setView('press');
+  }, []);
 
   useEffect(() => {
     const id = window.setInterval(() => setLive(new Date()), 30_000);
@@ -163,6 +176,13 @@ export default function App() {
             >
               The Courier
             </button>
+            <button
+              type="button"
+              className={view === 'press' || view === 'volume' ? 'on' : ''}
+              onClick={() => setView(store.casebook.unlocked ? 'volume' : 'press')}
+            >
+              The Press
+            </button>
             <button type="button" onClick={() => setHowTo(true)}>
               How to play
             </button>
@@ -219,6 +239,36 @@ export default function App() {
 
         {view === 'archive' && <Archive dates={archiveDates(live)} store={store} />}
         {view === 'watchman' && <Watchman saved={store.reminders} onSave={saveWatch} />}
+        {view === 'press' && (
+          <Press
+            unlocked={store.casebook.unlocked}
+            onUnlock={() =>
+              setStore((s) => ({ ...s, casebook: { ...s.casebook, unlocked: true } }))
+            }
+            onOpenVolume={() => setView('volume')}
+          />
+        )}
+        {view === 'volume' && store.casebook.unlocked && (
+          <CasebookReader
+            store={store}
+            onPatch={(caseId, next) =>
+              setStore((s) => ({
+                ...s,
+                casebook: { ...s.casebook, cases: { ...s.casebook.cases, [caseId]: next } },
+              }))
+            }
+            onBack={() => setView('press')}
+          />
+        )}
+        {view === 'volume' && !store.casebook.unlocked && (
+          <Press
+            unlocked={false}
+            onUnlock={() =>
+              setStore((s) => ({ ...s, casebook: { ...s.casebook, unlocked: true } }))
+            }
+            onOpenVolume={() => setView('volume')}
+          />
+        )}
       </main>
 
       <footer className="colophon">

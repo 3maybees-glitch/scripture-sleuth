@@ -87,6 +87,32 @@ export function IconSeal({ className }: IconProps) {
   );
 }
 
+export function IconCandle({ className }: IconProps) {
+  return (
+    <svg className={className} viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <path d="M24 8c2 3 3 5 3 7 0 2-1.2 3.4-3 3.4S21 17 21 15c0-2 1-4 3-7Z" fill="currentColor" opacity="0.35" />
+      <path d="M24 8c2 3 3 5 3 7 0 2-1.2 3.4-3 3.4S21 17 21 15c0-2 1-4 3-7Z" stroke="currentColor" strokeWidth="2" />
+      <rect x="20" y="18" width="8" height="18" rx="1" stroke="currentColor" strokeWidth="2" />
+      <path d="M14 40h20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export function IconEmber({ className }: IconProps) {
+  return (
+    <svg className={className} viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <circle cx="24" cy="28" r="8" fill="currentColor" opacity="0.2" />
+      <path
+        d="M16 30c1-6 4-10 8-16 4 6 7 10 8 16 0 5-3.5 9-8 9s-8-4-8-9Z"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+      <circle cx="24" cy="30" r="3" fill="currentColor" />
+    </svg>
+  );
+}
+
 export function IconGlass({ className }: IconProps) {
   return (
     <svg className={className} viewBox="0 0 48 48" fill="none" aria-hidden="true">
@@ -105,5 +131,22 @@ const badgeMap = {
 
 export function BadgeIcon({ id, className }: { id: BadgeId; className?: string }) {
   const Cmp = badgeMap[id];
+  return <Cmp className={className} />;
+}
+
+const rankMap = {
+  lantern: IconLamp,
+  candle: IconCandle,
+  ember: IconEmber,
+} as const;
+
+export function RankIcon({
+  id,
+  className,
+}: {
+  id: keyof typeof rankMap;
+  className?: string;
+}) {
+  const Cmp = rankMap[id];
   return <Cmp className={className} />;
 }
