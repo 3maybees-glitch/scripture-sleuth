@@ -2,10 +2,16 @@ import type { DayProgress, DeckKind, Store } from '../types';
 
 const KEY = 'scripture-sleuth:v1';
 
+const emptyCasebook = (): Store['casebook'] => ({
+  unlocked: false,
+  cases: {},
+});
+
 const empty = (): Store => ({
   seenHowTo: false,
   days: {},
   reminders: null,
+  casebook: emptyCasebook(),
 });
 
 export function loadStore(): Store {
@@ -17,6 +23,10 @@ export function loadStore(): Store {
       seenHowTo: Boolean(parsed.seenHowTo),
       days: parsed.days ?? {},
       reminders: parsed.reminders ?? null,
+      casebook: {
+        unlocked: Boolean(parsed.casebook?.unlocked),
+        cases: parsed.casebook?.cases ?? {},
+      },
     };
   } catch {
     return empty();

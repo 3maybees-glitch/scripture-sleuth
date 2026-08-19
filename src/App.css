@@ -770,8 +770,258 @@ blockquote.clue-line {
   background: rgba(139, 30, 45, 0.06);
 }
 
+.press {
+  display: grid;
+  gap: 1.15rem;
+}
+
+.press-hero {
+  padding: 1.4rem 1.35rem 1.5rem;
+}
+
+.press-hero h2 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.65rem 1rem;
+  margin: 0 0 0.35rem;
+}
+
+.vol-mark {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--wax);
+}
+
+.press-sub {
+  margin-bottom: 0.85rem;
+  font-family: var(--display);
+  letter-spacing: 0.04em;
+}
+
+.rank-cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+}
+
+.rank-card {
+  padding: 1.1rem 1rem 1.05rem;
+  border-radius: 6px;
+  border: 1px solid rgba(201, 164, 74, 0.22);
+  background:
+    linear-gradient(180deg, rgba(10, 28, 20, 0.28), rgba(8, 20, 14, 0.45)),
+    url('/textures/felt.jpg') center / cover;
+}
+
+.rank-card h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+  color: var(--gold-bright);
+}
+
+.rank-card p {
+  color: rgba(250, 244, 230, 0.78);
+  font-size: 0.92rem;
+}
+
+.rank-ico {
+  width: 2rem;
+  height: 2rem;
+  color: var(--gold-bright);
+  margin-bottom: 0.45rem;
+}
+
+.press-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 1.15rem;
+  align-items: start;
+}
+
+.buy-card {
+  background:
+    linear-gradient(180deg, rgba(10, 28, 20, 0.28), rgba(8, 20, 14, 0.45)),
+    url('/textures/felt.jpg') center / cover;
+  color: var(--cream);
+  padding: 1.2rem 1.1rem 1.2rem;
+  border-radius: 6px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(201, 164, 74, 0.22);
+}
+
+.buy-card h3 {
+  margin: 0 0 0.55rem;
+  color: var(--gold-bright);
+}
+
+.price {
+  font-family: var(--display);
+  font-size: 2rem;
+  color: var(--gold-bright);
+  margin: 0 0 0.7rem;
+}
+
+.price span {
+  display: block;
+  font-family: var(--note);
+  font-size: 0.85rem;
+  color: rgba(250, 244, 230, 0.7);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.buy-list {
+  margin: 0 0 1rem;
+  padding: 0 0 0 1.1rem;
+  color: rgba(250, 244, 230, 0.78);
+  font-size: 0.92rem;
+}
+
+.buy-list li {
+  margin: 0.35rem 0;
+}
+
+.buy-card .btn {
+  text-decoration: none;
+}
+
+.sampler-link,
+.unlock-form {
+  display: block;
+  margin-top: 0.85rem;
+}
+
+.unlock-form label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.88rem;
+  color: rgba(250, 244, 230, 0.78);
+}
+
+.unlock-form input {
+  border: 1px solid rgba(201, 164, 74, 0.35);
+  background: rgba(18, 11, 8, 0.45);
+  color: var(--cream);
+  padding: 0.5rem 0.6rem;
+}
+
+.unlock-err {
+  color: #f0c4b0;
+  font-size: 0.86rem;
+  margin: 0.4rem 0 0;
+}
+
+.unlocked-actions {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.unlocked-actions .btn {
+  text-decoration: none;
+}
+
+.rank-seal {
+  width: 4.4rem;
+  height: 4.4rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(18, 11, 8, 0.55);
+  border: 2px solid rgba(201, 164, 74, 0.45);
+  color: var(--wax);
+}
+
+.rank-seal .rank-ico {
+  width: 2.4rem;
+  height: 2.4rem;
+  margin: 0;
+  color: var(--gold);
+}
+
+.reader-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.85rem;
+}
+
+.reader-layout {
+  display: grid;
+  grid-template-columns: minmax(12rem, 16rem) minmax(0, 1fr);
+  gap: 1.15rem;
+  align-items: start;
+}
+
+.dossier {
+  padding: 1.1rem 0.95rem 1.15rem;
+  position: sticky;
+  top: 0.8rem;
+  max-height: calc(100svh - 1.6rem);
+  overflow: auto;
+}
+
+.dossier h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.15rem;
+}
+
+.docket-list {
+  list-style: none;
+  margin: 0.8rem 0 0;
+  padding: 0;
+}
+
+.docket-list button {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2.4rem 1fr auto;
+  gap: 0.4rem;
+  align-items: baseline;
+  padding: 0.38rem 0.35rem;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink);
+  text-align: left;
+  font-size: 0.78rem;
+}
+
+.docket-list button.on {
+  background: rgba(139, 30, 45, 0.08);
+  box-shadow: inset 3px 0 0 var(--wax);
+}
+
+.docket-list button.closed .docket-state {
+  color: var(--wax);
+}
+
+.docket-no {
+  font-family: var(--note);
+  color: var(--wax);
+}
+
+.docket-rank {
+  font-family: var(--display);
+  letter-spacing: 0.04em;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+}
+
+.docket-state {
+  font-family: var(--note);
+  opacity: 0.7;
+}
+
 @media (max-width: 900px) {
-  .case-grid {
+  .case-grid,
+  .rank-cards,
+  .press-grid,
+  .reader-layout {
     grid-template-columns: 1fr;
   }
 
@@ -782,6 +1032,11 @@ blockquote.clue-line {
   .phase-label {
     font-size: 0.62rem;
     letter-spacing: 0.04em;
+  }
+
+  .dossier {
+    position: static;
+    max-height: 16rem;
   }
 }
 

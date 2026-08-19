@@ -11,6 +11,8 @@ node_modules
 dist
 dist-ssr
 *.local
+scripts/.casebook-print.html
+scripts/.casebook-sampler.html
 
 # Editor directories and files
 .vscode/*
